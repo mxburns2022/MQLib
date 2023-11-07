@@ -89,7 +89,7 @@ void Katayama2000QUBOSolution::VariantKOpt() {
 
       // Fig 1 Steps 1.2.3: Find index j (j \in C) with best diff_weights_[j]
       int j = -1;
-      double bestGain = -std::numeric_limits<double>::max();
+      double bestGain = -__DBL_MAX__;
       for (int i=0; i < N_; ++i) {
 	if (inC[i] && diff_weights_[i] > bestGain) {
 	  j = i;

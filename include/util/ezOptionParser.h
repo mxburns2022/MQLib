@@ -778,7 +778,7 @@ bool ezOptionValidator::isValid(const std::string * valueAsString) {
         }
         } break;
       case D: {
-        long double ldmax = static_cast<long double>(std::numeric_limits<double>::max()); 
+        long double ldmax = static_cast<long double>(__DBL_MAX__); 
         std::stringstream ss(valueAsString->c_str());
         long double ldvalue;
         ss >> ldvalue;

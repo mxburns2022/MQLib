@@ -79,7 +79,7 @@ void Glover2010QUBOSolution::TabuSearch(std::vector<int>* FlipFreq) {
   while (step - lastImprovement < alpha) {
     // Find the best non-tabu move (allow tabu moves if they will improve on the
     // best solution so far.
-    double bestMove = -std::numeric_limits<double>::max();
+    double bestMove = -__DBL_MAX__;
     int bestIdx = -1;
     for (int i=0; i < N_; ++i) {
       if (NonTabuTimes[i] <= step || ImprovesOverAfterMove(best, i)) {

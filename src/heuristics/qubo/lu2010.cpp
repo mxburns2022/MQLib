@@ -21,7 +21,7 @@ void Lu2010QUBOSolution::TabuSearch() {
   int numWithoutImprovement = 0;  // Moves w/o improving best solution
   for (int iter=0; numWithoutImprovement < alpha; ++iter) {
     std::vector<int> bests;  // All indices tied with best improvement
-    double bestVal = -std::numeric_limits<double>::max();
+    double bestVal = -__DBL_MAX__;
     for (int i=0; i < N_; ++i) {
       // If var is either not on the tabu list or would improve on the best
       // solution to date, update "bests" and "bestVal"
@@ -107,7 +107,7 @@ Lu2010PartialSolution::Lu2010PartialSolution(const QUBOInstance& qi,
     // First, loop through the values in NC and pick the most promising
     int tomove = -1;  // The variable number to move
     int tomove_idx = -1;  // The index in NC of the variable to move
-    double bestDiff = -std::numeric_limits<double>::max();
+    double bestDiff = -__DBL_MAX__;
     for (int idx=0; idx < NC.size(); ++idx) {
       int i = NC[idx];
       double thisMove;
@@ -140,7 +140,7 @@ Lu2010Population::Lu2010Population(int p, const QUBOInstance& qi,
   p_(p),
   HD_(p*p, 0),
   NHD_(p*p, 0.0),
-  min_NHD_(p, std::numeric_limits<double>::max()),
+  min_NHD_(p, __DBL_MAX__),
   VI_(qi.get_size(), 0.0) {
   // Parameters
   double phi = 0.2;  // Variable importance coefficient
@@ -243,7 +243,7 @@ void Lu2010Population::UpdatePool(const Lu2010QUBOSolution& x0) {
   std::vector<double> x0_NHD(p_, 0.0);
   std::vector<double> new_min_NHD = min_NHD_;
   // Min dist from x0 to an element in the population
-  double x0_min_NHD = std::numeric_limits<double>::max();
+  double x0_min_NHD = __DBL_MAX__;
   for (int i=0; i < p_; ++i) {
     std::vector<int> diffs;
     x0_HD[i] = x0.SymmetricDifference(P_[i], &diffs);
@@ -272,7 +272,7 @@ void Lu2010Population::UpdatePool(const Lu2010QUBOSolution& x0) {
   double g_x0 = beta*((x0.get_weight() - obj_min) / (obj_max - obj_min + 1.0)) +
     (1-beta)*((x0_min_NHD - NHD_min) / (NHD_max - NHD_min + 1.0));
   int w = -1;
-  double worst_score = std::numeric_limits<double>::max();
+  double worst_score = __DBL_MAX__;
   for (int i=0; i < p_; ++i) {
     double g_xi = beta*((P_[i].get_weight()-obj_min)/(obj_max-obj_min + 1.0)) +
       (1-beta) * ((new_min_NHD[i] - NHD_min) / (NHD_max - NHD_min + 1.0));
@@ -298,7 +298,7 @@ void Lu2010Population::UpdatePool(const Lu2010QUBOSolution& x0) {
 
     // Compute avg_HD_ and min_NHD_ for the new population
     for (int i=0; i < p_; ++i) {
-      min_NHD_[i] = std::numeric_limits<double>::max();
+      min_NHD_[i] = __DBL_MAX__;
     }
     double HD_sum = 0.0;
     for (int i=0; i < p_; ++i) {

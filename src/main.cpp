@@ -313,7 +313,7 @@ int main(int argc, const char* argv[]) {
       std::string selected;
       mh = new MaxCutHyperheuristic(*mi, runtime_limit, validation, NULL, seed,
                                     &selected);
-      heuristic = mh;
+      printf("Selected something\n");
       heuristic_code = "HH_" + selected;
     }
 

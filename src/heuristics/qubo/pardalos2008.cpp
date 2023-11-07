@@ -123,7 +123,7 @@ void Pardalos2008QUBOSolution::TabuSearch
 
       // Alg 2 Steps 28-36: Identify the best one-flip not blocked by the
       // tabu tenure (regardless of whether it's improving or not).
-      delta = -std::numeric_limits<double>::max();
+      delta = -__DBL_MAX__;
       int indBest = -1;
       for (int k=0; k < N_; ++k) {
 	int j = M[k];

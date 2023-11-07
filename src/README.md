@@ -329,7 +329,7 @@ To implement a new metric that returns a single value for the problem instance, 
 double GraphMetrics::GetPropMaxEdges() {
   // Returns the proportion of edges that have the maximum weight
   int max_count = 0;
-  double max_val = -std::numeric_limits<double>::max();
+  double max_val = -__DBL_MAX__;
   for (auto iter = mi_.get_all_edges_begin(); iter != mi_.get_all_edges_end(); ++iter) {
     double w = iter->second;  // Edge weight
     if (w > max_val) {

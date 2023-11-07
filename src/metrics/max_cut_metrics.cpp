@@ -318,8 +318,8 @@ void GraphMetrics::GetSummary(const std::vector<double>& data,
 
   // Given a vector of data, return a vector of length 4 containing, 
   // in order, [min{data}, max{data}, mean{data}, std{data}]
-  double min_x =  std::numeric_limits<double>::max();
-  double max_x = -std::numeric_limits<double>::max();
+  double min_x =  __DBL_MAX__;
+  double max_x = -__DBL_MAX__;
   double sum_x  = 0.0;
   // Pass 1: Compute min, max, and mean of values
   for (auto it = data.begin(); it != data.end(); it++) {

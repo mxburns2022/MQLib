@@ -17,7 +17,7 @@ void Glover1998aSolution::doPhaseBegin(int matchVal, int k,
 
   // For the first k indices changed, use penalties from tabu values
   for (int iter=0; iter < k; ++iter) {
-    double best_val = -std::numeric_limits<double>::max();
+    double best_val = -__DBL_MAX__;
     int best_loc = -1;
     for (int i=0; i < N_; ++i) {
       if (assignments_[i] == matchVal) {

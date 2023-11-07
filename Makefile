@@ -1,4 +1,4 @@
-CFLAGS = -Iinclude -std=c++0x -O2 -Wall
+CFLAGS = -Iinclude -std=c++17 -O2 -Wall
 LFLAGS = -lm
 SHAREFLAGS = -shared -fPIC
 BUILDDIR = .build

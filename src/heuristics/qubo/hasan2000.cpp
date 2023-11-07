@@ -119,7 +119,7 @@ Hasan2000GA::Hasan2000GA(const QUBOInstance& qi, double runtime_limit,
       // Identify the best child, adding each to the population if it doesn't
       // duplicate a solution currently in the population.
       int bestIdx = -1;
-      double bestWeight = -std::numeric_limits<double>::max();
+      double bestWeight = -__DBL_MAX__;
       for (int i=0; i < children.size(); ++i) {
         if (children[i].get_weight() > bestWeight) {
           bestIdx = i;
@@ -158,7 +158,7 @@ void Hasan2000Solution::TS() {
     // We use the FA strategy, so if a move improves the current objective we
     // select it without checking further.
     int selectedMove = -1;
-    double selectedDW = -std::numeric_limits<double>::max();
+    double selectedDW = -__DBL_MAX__;
     for (int i=0; i < N_; ++i) {
       if (t <= TABL[i]) {
 	// i is tabu

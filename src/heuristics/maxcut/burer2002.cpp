@@ -288,7 +288,7 @@ Burer2002::Burer2002(const MaxCutInstance& mi, double runtime_limit,
     }
 
     // Algorithm 1 from Section 4
-    double best_weight = -std::numeric_limits<double>::max();
+    double best_weight = -__DBL_MAX__;
     int k = 0;  // # of runs without an improvement in the best solution
     while (k <= N) {
       // Rank2Cut minimizes f(theta) and then uses Procedure-CUT to get the

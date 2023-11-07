@@ -45,8 +45,8 @@ Festa2002PartialSolution::Festa2002PartialSolution(const MaxCutInstance& mi,
   // Now, assign the remaining nodes.
   while (num_unassigned_ > 0) {
     // Determine the limits (w_min and w_max from paper)
-    double this_best = -std::numeric_limits<double>::max();
-    double this_worst = std::numeric_limits<double>::max();
+    double this_best = -__DBL_MAX__;
+    double this_worst = __DBL_MAX__;
     for (int i=0; i < N_; ++i) {
       if (assignments_[i] != 0) {
 	continue;  // i is already assigned

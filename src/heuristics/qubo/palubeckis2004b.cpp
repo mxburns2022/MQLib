@@ -24,7 +24,7 @@ void Palubeckis2004bSolution::STSMod(double *best_objective, int zmax,
   int z = 0;  // Operation counter
   for (int iter=0; z < zmax; ++iter) {
     // Step 2: Initialize some iteration variables
-    double V = -std::numeric_limits<double>::max();  // Best possible change
+    double V = -__DBL_MAX__;  // Best possible change
     int r = -1;  // Best possible index
     int rho = 0;  // Have we found a best ever solution?
     for (int k=0; k < N_; ++k) {
@@ -76,7 +76,7 @@ void Palubeckis2004bSolution::STSMod(double *best_objective, int zmax,
 	// index and weight of the worst element of B.
 	bool matches = false;
 	int worst_pos = -1;
-	double worst_weight = std::numeric_limits<double>::max();
+	double worst_weight = __DBL_MAX__;
 	for (int ct=0; ct < B->size(); ++ct) {
 	  if ((*B)[ct] == *this) {
 	    matches = true;
@@ -204,8 +204,8 @@ void Palubeckis2004bSolution::SelectVariables(int n_prime,
   // Loop until n_prime values added to I_star
   for (int ct=0; ct < n_prime; ++ct) {
     // Step 2: compute e values from d values. First, grab d_min and d_max:
-    double d_min = std::numeric_limits<double>::max();
-    double d_max = -std::numeric_limits<double>::max();
+    double d_min = __DBL_MAX__;
+    double d_max = -__DBL_MAX__;
     for (int ct=0; ct < N_; ++ct) {
       if (!d[ct].second) {
 	d_max = std::max<double>(d_max, d[ct].first);
@@ -291,8 +291,8 @@ void Palubeckis2004bSolution::SteepestAscent(const std::vector<int> I_star) {
   // Step 2: Loop for |I_star|
   for (int iter_count=0; iter_count < I_star.size(); ++iter_count) {
     // Step 2.1: Initialize V1 and V2 (and a few other vars)
-    double V1 = -std::numeric_limits<double>::max();
-    double V2 = -std::numeric_limits<double>::max();
+    double V1 = -__DBL_MAX__;
+    double V2 = -__DBL_MAX__;
     int j = -1;
     int v = -1;
 

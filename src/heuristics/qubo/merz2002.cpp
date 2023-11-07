@@ -16,9 +16,9 @@ Merz2002PartialSolution::Merz2002PartialSolution(const QUBOInstance& qi,
   // Iterate until no variables have fractional values
   while (num_frac_ > 0) {
     // Identify the fractional vars with the best gain to 0 or 1
-    double best0val = -std::numeric_limits<double>::max();
+    double best0val = -__DBL_MAX__;
     int best0pos = -1;
-    double best1val = -std::numeric_limits<double>::max();
+    double best1val = -__DBL_MAX__;
     int best1pos = -1;
     for (int i=0; i < N_; ++i) {
       if (assignments_[i] == 0 || assignments_[i] == 1.0) {
@@ -74,7 +74,7 @@ void Merz2002QUBOSolution::KOpt() {
     for (int iter=0; iter < N_; ++iter) {
       // Identify the best 1-flip to perform
       int bestPos = -1;
-      double bestDW = -std::numeric_limits<double>::max();
+      double bestDW = -__DBL_MAX__;
       for (int i=0; i < N_; ++i) {
 	if (inC[i] && diff_weights_[i] > bestDW) {
 	  bestPos = i;
